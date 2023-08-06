@@ -5,6 +5,7 @@ import singUpBanner from '../../assets/others/authentication2.png';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const [disabled, setDisabled] = useState(true);
@@ -85,11 +86,13 @@ const Login = () => {
                                 </label>
                                 <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" />
                             </div>
+                            {/* Make button disabled for captcha */}
                             <div className="form-control mt-6">
                                 <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
                             </div>
                         </form>
                         <p><small>New Here?</small><Link to="/signup">Create an account</Link></p>
+                        <SocialLogin />
                     </div>
                 </div>
             </div>

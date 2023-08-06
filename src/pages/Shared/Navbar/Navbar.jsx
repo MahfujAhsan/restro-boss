@@ -1,9 +1,12 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../../providers/AuthProvider"
+import { BiSolidCartAdd } from 'react-icons/bi';
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
+    const [cart] = useCart();
 
     const handleLogOut = () => {
         logOut()
@@ -24,10 +27,22 @@ const Navbar = () => {
         <li>
             <Link to="/secret">Secret</Link>
         </li>
+        <li>
+            <Link to="/dashboard/my-cart">
+                <button className="flex items-center space-x-2">
+                    <BiSolidCartAdd size={28} />
+                    <div className="badge badge-secondary">+{cart?.length || 0}</div>
+                </button>
+            </Link>
+        </li>
         {
-            user ? <><button onClick={handleLogOut} className="btn btn-ghost">Logout</button></> : <><li>
-                <Link to="/login">Login</Link>
-            </li></>
+            user ? <>
+                <button onClick={handleLogOut} className="flex items-center space-x-2">Logout</button>
+            </> : <>
+                <li>
+                    <Link to="/login">Login</Link>
+                </li>
+            </>
         }
     </>
     return (
@@ -45,7 +60,7 @@ const Navbar = () => {
                     <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal px-1 font-semibold">
                         {menuItems}
                     </ul>
                 </div>
