@@ -27,7 +27,6 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
         signIn(email, password)
             .then(result => {
                 const user = result.user;
@@ -88,7 +87,7 @@ const Login = () => {
                             </div>
                             {/* Make button disabled for captcha */}
                             <div className="form-control mt-6">
-                                <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
+                                <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
                             </div>
                         </form>
                         <p><small>New Here?</small><Link to="/signup">Create an account</Link></p>

@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async"
 import useCart from "../../../hooks/useCart"
 import { FaTrashAlt } from 'react-icons/fa'
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const MyCart = () => {
@@ -9,7 +10,7 @@ const MyCart = () => {
   const total = cart.reduce((sum, item) => item.price + sum, 0);
 
   const handleDelete = (item) => {
-    
+
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -46,7 +47,9 @@ const MyCart = () => {
       <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
         <h3 className="text-xl">Total Items: {cart?.length}</h3>
         <h3 className="text-xl">Total Price: ${total}</h3>
-        <button className="btn btn-warning btn-sm">PAY</button>
+        <Link to="/dashboard/payment">
+          <button className="btn btn-warning btn-sm">PAY</button>
+        </Link>
       </div>
       <div className="overflow-x-auto">
         <table className="table">
