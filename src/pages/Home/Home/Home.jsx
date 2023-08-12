@@ -4,6 +4,9 @@ import Category from "../Category/Category"
 import Featured from "../Featured/Featured"
 import PopularMenu from "../PopularMenu/PopularMenu"
 import Testimonials from "../Testimonials/Testimonials"
+import Poster from "../Poster/Poster"
+import CallUs from "../CallUs/CallUs"
+import RecommendFood from "../RecommendFood/RecommendFood"
 
 
 const Home = () => {
@@ -14,7 +17,10 @@ const Home = () => {
       </Helmet>
       <Banner />
       <Category />
+      <Poster />
       <PopularMenu />
+      <CallUs />
+      <RecommendFood />
       <Featured />
       <Testimonials />
     </>

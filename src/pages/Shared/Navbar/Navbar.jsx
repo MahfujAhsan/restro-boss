@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { BiSolidCartAdd } from 'react-icons/bi';
 import useCart from "../../../hooks/useCart";
 import useAdmin from "../../../hooks/useAdmin";
 import useAuth from "../../../hooks/useAuth";
+import { FiLogIn, FiLogOut } from 'react-icons/fi';
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
@@ -16,43 +17,36 @@ const Navbar = () => {
     }
 
     const menuItems = <>
-        <li>
-            <Link to="/">Home</Link>
+        <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black hover:outline-white transition-all">
+            <NavLink className="hover:text-white" to="/">Home</NavLink>
         </li>
-        <li>
-            <Link to="/menu">Our Menu</Link>
+        <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
+            <NavLink className="hover:text-white" to="/menu">Our Menu</NavLink>
         </li>
-        <li>
-            <Link to="/order/salad">Order Food</Link>
+        <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
+            <NavLink className="hover:text-white" to="/order/salad">Order Food</NavLink>
         </li>
         {
-            isAdmin ? <li>
-                <Link to="/dashboard/admin-home">Dashboard</Link>
-            </li> : <li>
-                <Link to="/dashboard/user-home">Dashboard</Link>
+            isAdmin ? <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
+                <NavLink className="hover:text-white" to="/dashboard/admin-home">Dashboard</NavLink>
+            </li> : <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
+                    <NavLink className="hover:text-white" to="/dashboard/user-home">Dashboard</NavLink>
             </li>
         }
-        <li>
-            <Link to="/dashboard/my-cart">
+        <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
+            <Link className="hover:text-white" to="/dashboard/my-cart">
                 <button className="flex items-center space-x-2">
                     <BiSolidCartAdd size={28} />
-                    <div className="badge badge-secondary">+{cart?.length || 0}</div>
+                    <div className="badge">
+                        <p className="mb-[2px]">+{cart?.length || 0}</p>
+                    </div>
                 </button>
             </Link>
         </li>
-        {
-            user ? <>
-                <button onClick={handleLogOut} className="flex items-center space-x-2">Logout</button>
-            </> : <>
-                <li>
-                    <Link to="/login">Login</Link>
-                </li>
-            </>
-        }
     </>
     return (
         <>
-            <nav className="navbar fixed z-10 bg-black bg-opacity-30 text-white max-w-screen-xl mx-auto">
+            <nav className="navbar fixed z-10 bg-black bg-opacity-40 text-white max-w-screen-xl mx-auto rounded-b-lg">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -62,15 +56,31 @@ const Navbar = () => {
                             {menuItems}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a>
+                    <Link to="/" className=" btn-ghost text-xl uppercase flex-col px-[16px]">
+                        <p className="font-semibold">Bistro Boss</p>
+                        <p className="tracking-[2px] text-[17px]">Restaurant</p>
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 font-semibold">
+                    <ul className="menu menu-horizontal px-1 font-semibold items-center">
                         {menuItems}
                     </ul>
                 </div>
+
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {
+                        user ? <>
+                            <button onClick={handleLogOut} className="bg-[#a58400] px-5 py-[7px] rounded-md uppercase text-sm flex items-center space-x-2 font-semibold hover:bg-opacity-10 transition-all">
+                                <span>Logout</span>
+                                <FiLogOut size={20} />
+                            </button>
+                        </> : <>
+                            <Link className="bg-[#a58400] px-5 py-[7px] rounded-md uppercase text-sm flex items-center space-x-2 font-semibold hover:bg-opacity-10 transition-all" to="/login">
+                                <span>Login</span>
+                                <FiLogIn size={20}/>
+                            </Link>
+                        </>
+                    }
                 </div>
             </nav>
         </>

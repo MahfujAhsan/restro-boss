@@ -8,7 +8,8 @@ import 'swiper/css/navigation';
 import { useEffect, useState } from "react";
 
 import { Rating } from "@smastrom/react-rating";
-import '@smastrom/react-rating/style.css'
+import '@smastrom/react-rating/style.css';
+import quote from '../../../assets/quote.png'
 
 
 const Testimonials = () => {
@@ -29,12 +30,13 @@ const Testimonials = () => {
 
                 {
                     reviews.map((review) => <SwiperSlide key={review._id}>
-                        <div className="my-16 mx-24 flex flex-col items-center space-y-2">
+                        <div className="my-0 mx-24 flex flex-col items-center space-y-2">
                             <Rating
-                                style={{ maxWidth: 180 }}
+                                style={{ maxWidth: 180, marginBottom: '15px' }}
                                 value={review.rating}
                                 readOnly
                             />
+                            <img className="w-[70px]" src={quote} alt="" />
                             <p>{review.details}</p>
                             <h3 className="text-2xl text-orange-400">{review.name}</h3>
                         </div>

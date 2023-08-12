@@ -1,40 +1,28 @@
-
+import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-      <footer className="footer p-10 bg-base-200 text-base-content">
-          <div>
-              <span className="footer-title">Services</span>
-              <a className="link link-hover">Branding</a>
-              <a className="link link-hover">Design</a>
-              <a className="link link-hover">Marketing</a>
-              <a className="link link-hover">Advertisement</a>
-          </div>
-          <div>
-              <span className="footer-title">Company</span>
-              <a className="link link-hover">About us</a>
-              <a className="link link-hover">Contact</a>
-              <a className="link link-hover">Jobs</a>
-              <a className="link link-hover">Press kit</a>
-          </div>
-          <div>
-              <span className="footer-title">Legal</span>
-              <a className="link link-hover">Terms of use</a>
-              <a className="link link-hover">Privacy policy</a>
-              <a className="link link-hover">Cookie policy</a>
-          </div>
-          <div>
-              <span className="footer-title">Newsletter</span>
-              <div className="form-control w-80">
-                  <label className="label">
-                      <span className="label-text">Enter your email address</span>
-                  </label>
-                  <div className="relative">
-                      <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" />
-                      <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
+      <footer>
+          <div className="flex justify-center text-white h-[250px]">
+              <div className="bg-[#1F2937] w-1/2 text-center flex flex-col justify-center rounded-tl-lg">
+                  <h2 className='text-2xl uppercase font-semibold mb-3'>Contact Us</h2>
+                  <p>123 ABS Street, Uni 21, Bangladesh</p>
+                  <p className='my-1'>+88 123456789</p>
+                  <p>Mon - Fri: 08:00 - 22:00</p>
+                  <p className='my-1'>Sat - Sun: 10:00 - 23:00</p>
+              </div>
+              <div className="bg-[#111827] w-1/2 text-center flex flex-col justify-center rounded-tr-lg">
+                  <h2 className='text-2xl uppercase font-semibold mb-3'>Follow Us</h2>
+                  <p className='mb-3'>Join us on social media</p>
+                  <div className='flex justify-center space-x-4'>
+                      <Link to="/"><FaFacebook size={20} /></Link>
+                      <Link to="/"><FaInstagram size={20} /></Link>
+                      <Link to="/"><FaTwitter size={20} /></Link>
                   </div>
               </div>
           </div>
+          <p className='text-center bg-black text-white rounded-bl-lg rounded-br-lg text-sm py-2 font-mono'>Copyright © CulinaryCloud. All rights reserved.</p>
       </footer>
   )
 }

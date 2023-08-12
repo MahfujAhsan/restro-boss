@@ -22,37 +22,6 @@ const Category = () => {
             <SectionTitle
                 subHeading={"From 11.00am to 10.00pm"}
                 heading={"Order Online"} />
-            {/* <Swiper
-                slidesPerView={4}
-                spaceBetween={30}
-                centeredSlides={true}
-                pagination={{
-                    clickable: true,
-                }}
-                modules={[Pagination]}
-                className="mySwiper mb-24"
-            >
-                <SwiperSlide>
-                    <img src={slide1} alt="" />
-                    <h4 className='text-4xl text-center uppercase -mt-16 text-white font-semibold'>Salads</h4>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={slide2} alt="" />
-                    <h4 className='text-4xl text-center uppercase -mt-16 text-white font-semibold'>Pizzas</h4>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={slide3} alt="" />
-                    <h4 className='text-4xl text-center uppercase -mt-16 text-white font-semibold'>Soups</h4>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={slide4} alt="" />
-                    <h4 className='text-4xl text-center uppercase -mt-16 text-white font-semibold'>Desserts</h4>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src={slide5} alt="" />
-                    <h4 className='text-4xl text-center uppercase -mt-16 text-white font-semibold'>Salads</h4>
-                </SwiperSlide>
-            </Swiper> */}
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
@@ -63,19 +32,24 @@ const Category = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <img className='rounded-lg' src={slide1} alt="" />
+                    <img className='rounded-lg mx-auto' src={slide1} alt="" />
+                    <p className='text-center uppercase mt-3 text-sm tracking-widest font-semibold'>Salad</p>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='rounded-lg' src={slide2} alt="" />
+                    <img className='rounded-lg mx-auto' src={slide2} alt="" />
+                    <p className='text-center uppercase mt-3 text-sm tracking-widest font-semibold'>Pizza</p>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='rounded-lg' src={slide3} alt="" />
+                    <img className='rounded-lg mx-auto' src={slide3} alt="" />
+                    <p className='text-center uppercase mt-3 text-sm tracking-widest font-semibold'>Soup</p>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='rounded-lg' src={slide4} alt="" />
+                    <img className='rounded-lg mx-auto' src={slide4} alt="" />
+                    <p className='text-center uppercase mt-3 text-sm tracking-widest font-semibold'>Dessert</p>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='rounded-lg' src={slide5} alt="" />
+                    <img className='rounded-lg mx-auto' src={slide5} alt="" />
+                    <p className='text-center uppercase mt-3 text-sm tracking-widest font-semibold'>Drinks</p>
                 </SwiperSlide>
                
             </Swiper>

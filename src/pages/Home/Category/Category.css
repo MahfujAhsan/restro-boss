@@ -12,3 +12,7 @@
     width: 15px;
     margin: 0px 12px;
 }
+
+.active {
+    color: #EEFF25!important;
+}

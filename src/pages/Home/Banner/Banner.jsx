@@ -6,27 +6,28 @@ import image3 from '../../../assets/home/03.png';
 import image4 from '../../../assets/home/04.jpg';
 import image5 from '../../../assets/home/05.png';
 import image6 from '../../../assets/home/06.png';
+import './Banner.css'
 
 const Banner = () => {
   return (
       <Carousel>
           <div>
-              <img src={image1} />
+              <img src={image1} alt=""/>
           </div>
           <div>
-              <img src={image2} />
+              <img src={image2} alt=""/>
           </div>
           <div>
-              <img src={image3} />
+              <img src={image3} alt=""/>
           </div>
           <div>
-              <img src={image4} />
+              <img src={image4} alt=""/>
           </div>
           <div>
-              <img src={image5} />
+              <img src={image5} alt=""/>
           </div>
           <div>
-              <img src={image6} />
+              <img src={image6} alt=""/>
           </div>
       </Carousel>
   )
