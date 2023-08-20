@@ -1,8 +1,10 @@
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle"
 import useMenu from "../../../hooks/useMenu"
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
+import UpdateItem from "./UpdateItem";
 
 
 const ManageItems = () => {
@@ -34,7 +36,8 @@ const ManageItems = () => {
                     })
             }
         })
-    }
+    };
+
     return (
         <div className="w-full">
             <SectionTitle heading="Manage All Items" subHeading="Hurry Up" />
@@ -78,16 +81,16 @@ const ManageItems = () => {
                                 </td>
                                 <td className="text-right">${item.price}</td>
                                 <td>
-                                    <button className="btn btn-ghost btn-xs">details</button>
+                                    <Link to={`/dashboard/update/${item._id}`}><button className="btn btn-ghost bg-[#D1A054] text-white"><FaEdit /></button></Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white"><FaTrashAlt /></button>
+                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white ml-2"><FaTrashAlt /></button>
                                 </td>
                             </tr>)
                         }
 
                     </tbody>
-
+                        
                 </table>
             </div>
         </div>

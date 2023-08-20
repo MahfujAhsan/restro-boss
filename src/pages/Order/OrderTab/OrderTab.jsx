@@ -4,6 +4,7 @@ import { Pagination } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import './OrderTab.css';
 
 
 const OrderTab = ({ items }) => {
@@ -21,7 +22,7 @@ const OrderTab = ({ items }) => {
                 className="mySwiper mb-24"
             >
                 <SwiperSlide>
-                    <div className='grid md:grid-cols-3 gap-10'>
+                    <div className='grid md:grid-cols-3 gap-10 place-items-center'>
                         {
                             items.map(item => <FoodCard key={item._id} item={item} />)
                         }
