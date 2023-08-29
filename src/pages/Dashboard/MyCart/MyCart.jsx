@@ -3,6 +3,7 @@ import useCart from "../../../hooks/useCart"
 import { FaTrashAlt } from 'react-icons/fa'
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { BsCreditCard2Back } from 'react-icons/bs';
 
 
 const MyCart = () => {
@@ -44,29 +45,29 @@ const MyCart = () => {
       <Helmet>
         <title>Bistro Boss | My Cart</title>
       </Helmet>
-      <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
-        <h3 className="text-xl">Total Items: {cart?.length}</h3>
-        <h3 className="text-xl">Total Price: ${total}</h3>
+      <div className="uppercase font-semibold h-[60px] flex justify-between px-4 items-center ">
+        <h3 className="text-xl text-slate-200">Total Items: {cart?.length}</h3>
+        <h3 className="text-xl text-slate-200">Total Price: ${total}</h3>
         <Link to="/dashboard/payment">
-          <button className="btn btn-warning btn-sm">PAY</button>
+          <button className="btn btn-warning btn-sm font-semibold">PAY <BsCreditCard2Back /></button>
         </Link>
       </div>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-lg">
               <th>#</th>
               <th>Food</th>
               <th>Item Name</th>
-              <th>Price</th>
-              <th>Action</th>
+              <th className="text-end">Price</th>
+              <th className="text-end">Action</th>
             </tr>
           </thead>
           <tbody>
             {
-              cart.map((item, index) => <tr key={item._id}>
-                <td>
+              cart.map((item, index) => <tr className = "text-white" key={item._id}>
+                <td >
                   {index + 1}
                 </td>
                 <td>
@@ -82,8 +83,8 @@ const MyCart = () => {
                   }
                 </td>
                 <td className="text-end">${item.price}</td>
-                <td>
-                  <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white"><FaTrashAlt /></button>
+                <td className="text-end">
+                  <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white"><FaTrashAlt size={20}/></button>
                 </td>
               </tr>)
             }

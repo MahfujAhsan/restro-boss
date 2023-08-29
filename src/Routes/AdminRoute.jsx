@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useAdmin from "../hooks/useAdmin";
+import { FaSpinner } from "react-icons/fa";
 
 
 const AdminRoute = ({ children }) => {
@@ -11,7 +12,10 @@ const AdminRoute = ({ children }) => {
     const location = useLocation();
 
     if (loading || isAdminLoading) {
-        return <progress className="progress w-56"></progress>
+        return <div className="h-screen flex flex-col items-center justify-center">
+            <FaSpinner size={90} color="purple" />
+            <progress className="progress w-96 mt-12 bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700"></progress>
+        </div>
     }
 
     if (user && isAdmin) {

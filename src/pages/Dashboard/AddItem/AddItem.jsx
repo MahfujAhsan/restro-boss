@@ -43,52 +43,51 @@ const AddItem = () => {
   return (
     <div className="w-full px-10">
       <SectionTitle subHeading="What's New?" heading="Add an Item" />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full text-center">
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text font-semi">Recipe name*</span>
+            <span className="label-text font-semibold text-slate-500">Recipe name*</span>
           </label>
           <input type="text" placeholder="Recipe Name"
             {...register("name", { required: true, maxLength: 80 })}
-            className="input input-bordered w-full" />
+            className="input input-bordered w-full border border-purple-700" />
 
           <div className="flex my-4">
             <div className="form-control w-full">
               <label className="label">
-                <span className="label-text">Category*</span>
+                <span className="label-text font-semibold text-slate-500">Category*</span>
               </label>
-              <select defaultValue="Pick One" {...register("category", { required: true })} className="select select-bordered">
+              <select defaultValue="Pick One" {...register("category", { required: true })} className="select select-bordered border border-purple-700">
                 <option disabled>Pick One</option>
                 <option>pizza</option>
                 <option>soup</option>
                 <option>salad</option>
                 <option>dessert</option>
-                <option>Desi</option>
                 <option>drinks</option>
               </select>
             </div>
             <div className="form-control w-full ml-4">
               <label className="label">
-                <span className="label-text font-semi">Price*</span>
+                <span className="label-text font-semibold text-slate-500">Price*</span>
               </label>
-              <input type="number" {...register("price", { required: true })} placeholder="Type here" className="input input-bordered w-full" />
+              <input type="number" {...register("price", { required: true })} placeholder="Type here" className="input input-bordered w-full border border-purple-700" />
             </div>
           </div>
         </div>
 
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Recipe Details*</span>
+            <span className="label-text font-semibold text-slate-500">Recipe Details*</span>
           </label>
-          <textarea {...register("recipe", { required: true })} className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+          <textarea {...register("recipe", { required: true })} className="textarea textarea-bordered h-24 border border-purple-700" placeholder="Bio"></textarea>
         </div>
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text">Item Image*</span>
+            <span className="label-text font-semibold text-slate-500">Item Image*</span>
           </label>
-          <input {...register("image", { required: true })} type="file" className="file-input file-input-bordered w-full" />
+          <input {...register("image", { required: true })} type="file" className="file-input file-input-bordered w-full border border-purple-700" />
         </div>
-        <input className="btn btn-sm mt-4" type="submit" value="Add Item" />
+        <input className="btn btn-primary mt-8 w-1/2 bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-white text-lg" type="submit" value="Add Item" />
       </form>
     </div>
   )

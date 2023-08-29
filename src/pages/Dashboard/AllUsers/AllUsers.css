@@ -1,0 +1,5 @@
+.table tr.active,
+.table tr.active:nth-child(even),
+.table-zebra tbody tr:nth-child(even) {
+    background-color: transparent!important;
+}

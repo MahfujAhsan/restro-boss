@@ -1,0 +1,7 @@
+.divider:before {
+    background: white;
+}
+
+.divider:after {
+    background: white;
+}

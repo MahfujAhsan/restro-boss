@@ -7,30 +7,56 @@ import image4 from '../../../assets/home/04.jpg';
 import image5 from '../../../assets/home/05.png';
 import image6 from '../../../assets/home/06.png';
 import './Banner.css'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 const Banner = () => {
-  return (
-      <Carousel>
-          <div>
-              <img src={image1} alt=""/>
-          </div>
-          <div>
-              <img src={image2} alt=""/>
-          </div>
-          <div>
-              <img src={image3} alt=""/>
-          </div>
-          <div>
-              <img src={image4} alt=""/>
-          </div>
-          <div>
-              <img src={image5} alt=""/>
-          </div>
-          <div>
-              <img src={image6} alt=""/>
-          </div>
-      </Carousel>
-  )
+    return (
+        <LazyLoadComponent>
+            <Carousel transitionTime={300} onSwipeMove useKeyboardArrows>
+                <div>
+                    <LazyLoadImage
+                        src={image1}
+                        effect="blur"
+                        visibleByDefault={image1 === '../../../assets/home/01.jpg'}
+                        delayTime={500}
+                        placeholder={<span>{image1}</span>}
+                    />
+                </div>
+                <div>
+                    <LazyLoadImage
+                        src={image2}
+                        effect="blur"
+                    />
+                </div>
+                <div>
+                    <LazyLoadImage
+                        src={image3}
+                        effect="blur"
+                    />
+                </div>
+                <div>
+                    <LazyLoadImage
+                        src={image4}
+                        effect="blur"
+                    />
+                </div>
+                <div>
+                    <LazyLoadImage
+                        src={image5}
+                        effect="blur"
+                    />
+                </div>
+                <div>
+                    <LazyLoadImage
+                        src={image6}
+                        effect="blur"
+                    />
+                </div>
+            </Carousel>
+        </LazyLoadComponent>
+    )
 }
 
 export default Banner

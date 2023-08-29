@@ -1,0 +1,23 @@
+/* .recharts-layer .recharts-pie {
+    width: 100%!important;
+    height: 100%!important;
+} */
+
+.recharts-default-legend {
+    margin-top: 0px !important;
+    text-transform: uppercase;
+    font-size: small;
+    font-weight: 500;
+}
+
+.recharts-cartesian-axis-ticks {
+    margin-top: 15px !important;
+    text-transform: uppercase;
+    font-size: small;
+    font-weight: 500;
+}
+
+.recharts-layer .recharts-label-list {
+    font-size: small;
+    font-weight: 500;
+}

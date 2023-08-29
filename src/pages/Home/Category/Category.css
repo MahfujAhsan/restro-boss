@@ -14,5 +14,9 @@
 }
 
 .active {
-    color: #EEFF25!important;
+    color: white!important;
+}
+
+.swiper-pagination-bullet {
+    background: linear-gradient(to bottom, #be185d, #7e22ce);
 }

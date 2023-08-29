@@ -1,14 +1,14 @@
-import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import { FaTrashAlt, FaEdit, FaSpinner } from "react-icons/fa";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle"
 import useMenu from "../../../hooks/useMenu"
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
-import UpdateItem from "./UpdateItem";
+import './ManageItem.css'
 
 
 const ManageItems = () => {
-    const [menu, , refetch] = useMenu();
+    const [menu, loading , refetch] = useMenu();
     const [axiosSecure] = useAxiosSecure();
 
     const handleDelete = item => {
@@ -25,7 +25,7 @@ const ManageItems = () => {
                 axiosSecure.delete(`/menu/${item._id}`)
                     .then(res => {
                         console.log(res)
-                        if (res.data.deletedCount > 0) {
+                        if (res.status === 200) {
                             refetch();
                             Swal.fire(
                                 'Deleted!',
@@ -38,21 +38,25 @@ const ManageItems = () => {
         })
     };
 
+    if (loading) {
+        return <div className="flex h-screen items-center justify-center"><FaSpinner size={90} color="purple"/></div>
+    }
+
     return (
         <div className="w-full">
             <SectionTitle heading="Manage All Items" subHeading="Hurry Up" />
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table text-slate-100">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-lg">
                             <th>
                                 #
                             </th>
                             <th>Item</th>
                             <th>Category</th>
-                            <th>Price</th>
-                            <th>Update</th>
+                            <th className="text-end">Price</th>
+                            <th className="text-end">Update</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -76,15 +80,15 @@ const ManageItems = () => {
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+                                <td className="uppercase text-xs">
                                     {item.category}
                                 </td>
                                 <td className="text-right">${item.price}</td>
-                                <td>
-                                    <Link to={`/dashboard/update/${item._id}`}><button className="btn btn-ghost bg-[#D1A054] text-white"><FaEdit /></button></Link>
+                                <td className="text-end">
+                                    <Link to={`/dashboard/update/${item._id}`}><button className="btn btn-ghost bg-indigo-700 text-white"><FaEdit size={20}/></button></Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white ml-2"><FaTrashAlt /></button>
+                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white ml-2"><FaTrashAlt size={20}/></button>
                                 </td>
                             </tr>)
                         }

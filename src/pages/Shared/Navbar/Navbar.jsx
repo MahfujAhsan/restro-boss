@@ -4,6 +4,7 @@ import useCart from "../../../hooks/useCart";
 import useAdmin from "../../../hooks/useAdmin";
 import useAuth from "../../../hooks/useAuth";
 import { FiLogIn, FiLogOut } from 'react-icons/fi';
+import './Navbar.css'
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
@@ -57,8 +58,8 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to="/" className=" btn-ghost text-xl uppercase flex-col px-[16px]">
-                        <p className="font-semibold">Bistro Boss</p>
-                        <p className="tracking-[2px] text-[17px]">Restaurant</p>
+                        <p className="font-bold  ">Bistro Boss</p>
+                        <p className="tracking-[2px] text-[18px] font-semibold">Restaurant</p>
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -70,12 +71,12 @@ const Navbar = () => {
                 <div className="navbar-end">
                     {
                         user ? <>
-                            <button onClick={handleLogOut} className="bg-[#a58400] px-5 py-[7px] rounded-md uppercase text-sm flex items-center space-x-2 font-semibold hover:bg-opacity-10 transition-all">
-                                <span>Logout</span>
+                            <button onClick={handleLogOut} className="bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 px-5 py-[7px] rounded-md uppercase text-sm flex items-center space-x-2 font-semibold hover:bg-opacity-10 transition-all">
+                                <span>{user?.displayName}</span>
                                 <FiLogOut size={20} />
                             </button>
                         </> : <>
-                            <Link className="bg-[#a58400] px-5 py-[7px] rounded-md uppercase text-sm flex items-center space-x-2 font-semibold hover:bg-opacity-10 transition-all" to="/login">
+                                <Link className="bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700  px-5 py-[7px] rounded-md uppercase text-sm flex items-center space-x-2 font-semibold hover:bg-opacity-10 transition-all" to="/login">
                                 <span>Login</span>
                                 <FiLogIn size={20}/>
                             </Link>

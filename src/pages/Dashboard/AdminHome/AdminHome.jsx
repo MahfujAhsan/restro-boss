@@ -1,14 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import { Bar, BarChart, CartesianGrid, Cell, XAxis, YAxis, PieChart, Pie, ResponsiveContainer, Legend } from "recharts";
+import { Bar, BarChart, CartesianGrid, Cell, XAxis, YAxis, PieChart, Pie, ResponsiveContainer, Legend, Tooltip } from "recharts";
+import './AdminHome.css'
+import { FaSpinner } from "react-icons/fa";
 
 
 const AdminHome = () => {
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
 
-    const { data: stats = {} } = useQuery({
+    const { data: stats = {}, isLoading } = useQuery({
         queryKey: ["admin-stats"],
         queryFn: async () => {
             const res = await axiosSecure('/admin-stats');
@@ -24,7 +26,7 @@ const AdminHome = () => {
         }
     })
 
-    const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
+    const colors = ['#0088FE', '#00C49F', '#BD1960', '#FF8042', 'red', 'pink'];
 
     const getPath = (x, y, width, height) => {
         return `M${x},${y + height}C${x + width / 3},${y + height} ${x + width / 2},${y + height / 3}
@@ -46,41 +48,47 @@ const AdminHome = () => {
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
         return (
-            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+            <text x={x} y={y} fill="white" className="font-semibold text-center text-xs" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
                 {`${(percent * 100).toFixed(0)}%`}
             </text>
         );
     };
+
+    if (isLoading) {
+        return <div className="flex h-screen items-center justify-center"><FaSpinner size={90} color="purple"/></div>
+    }
     return (
-        <div className="w-full m-4">
-            <h2 className="text-3xl">Welcome Back, {user?.displayName}</h2>
-            <div className="stats shadow">
+        <div className="w-full">
+            <h2 className="text-3xl text-center uppercase font-semibold my-16"><span className="font-mono text-slate-500">Welcome Back,</span> <span className="font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700">{user?.displayName}</span></h2>
+            <div className="flex justify-center">
+                <div className="stats shadow text-center w-full mb-16 rounded-md bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-white">
 
-                <div className="stat">
-                    <div className="stat-title">Revenue</div>
-                    <div className="stat-value">${stats.revenue}</div>
-                </div>
+                    <div className="stat  border-white">
+                        <div className="stat-title text-white font-semibold uppercase text-xs">Revenue</div>
+                        <div className="stat-value">${stats.revenue}+</div>
+                    </div>
 
-                <div className="stat">
-                    <div className="stat-title">Menu Items</div>
-                    <div className="stat-value">{stats.products}</div>
-                </div>
+                    <div className="stat border border-white">
+                        <div className="stat-title text-white font-semibold uppercase text-xs">Menu Items</div>
+                        <div className="stat-value">{stats.products}+</div>
+                    </div>
 
-                <div className="stat">
-                    <div className="stat-title">New Users</div>
-                    <div className="stat-value">{stats.users}</div>
-                </div>
+                    <div className="stat border border-white">
+                        <div className="stat-title text-white font-semibold uppercase text-xs">New Users</div>
+                        <div className="stat-value">{stats.users}+</div>
+                    </div>
 
-                <div className="stat">
-                    <div className="stat-title">Orders</div>
-                    <div className="stat-value">{stats.orders}</div>
+                    <div className="stat border border-white">
+                        <div className="stat-title text-white font-semibold uppercase text-xs">Orders</div>
+                        <div className="stat-value">{stats.orders}+</div>
+                    </div>
                 </div>
             </div>
-            <div className="flex">
+            <div className="flex ">
                 <div className="w-1/2">
                     <BarChart
                         width={500}
-                        height={300}
+                        height={350}
                         data={chartData}
                         margin={{
                             top: 20,
@@ -89,7 +97,7 @@ const AdminHome = () => {
                             bottom: 5,
                         }}
                     >
-                        <CartesianGrid strokeDasharray="3 3" />
+                        <CartesianGrid strokeDasharray="3 3" stroke="#D1A054" />
                         <XAxis dataKey="category" />
                         <YAxis />
                         <Bar dataKey="total" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
@@ -101,7 +109,8 @@ const AdminHome = () => {
                 </div>
                 <div className="w-1/2">
                     <ResponsiveContainer width="100%" height="100%">
-                        <PieChart width={400} height={400}>
+                        <PieChart width={500} height={300}
+                            >
                             <Legend />
                             <Pie
                                 data={chartData}
@@ -109,14 +118,17 @@ const AdminHome = () => {
                                 cy="50%"
                                 labelLine={false}
                                 label={renderCustomizedLabel}
-                                outerRadius={80}
+                                outerRadius={130}
                                 fill="#8884d8"
                                 dataKey="count"
+                                height={500}
+                                viewBox="0 0 730 500"
                             >
                                 {chartData.map((entry, index) => (
                                     <Cell name={entry.category} key={`cell-${index}`} fill={colors[index % colors.length]} />
                                 ))}
                             </Pie>
+                            <Tooltip content={chartData}/>
                         </PieChart>
                     </ResponsiveContainer>
                 </div>
