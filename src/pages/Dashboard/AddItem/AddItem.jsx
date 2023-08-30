@@ -87,7 +87,7 @@ const AddItem = () => {
           </label>
           <input {...register("image", { required: true })} type="file" className="file-input file-input-bordered w-full border border-purple-700" />
         </div>
-        <input className="btn btn-primary mt-8 w-1/2 bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-white text-lg" type="submit" value="Add Item" />
+        <input className="btn btn-primary mt-8 w-1/2 bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-white text-lg border-none" type="submit" value="Add Item" />
       </form>
     </div>
   )

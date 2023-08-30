@@ -130,7 +130,7 @@ const UpdateItem = () => {
                         <textarea {...register("recipe", { required: true })} className="textarea textarea-bordered h-24 border border-purple-700" defaultValue={item.recipe} onChange={(e) => e.currentTarget.value} placeholder="Recipe Details"></textarea>
                         {errors.recipe && <span className='mt-2 ml-1 text-[#CA4142] font-semibold text-xs'>Details is required</span>}
                     </div>
-                    <input className="btn btn-primary mt-4 w-1/2 bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-white text-lg" type="submit" value="Update Recipe Details" />
+                    <input className="btn btn-primary w-1/2 bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-white text-lg border-none mt-8" type="submit" value="Update Recipe Details" />
                 </form>
             </div>
         </section>

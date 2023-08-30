@@ -65,7 +65,7 @@ const AdminHome = () => {
 
                     <div className="stat  border-white">
                         <div className="stat-title text-white font-semibold uppercase text-xs">Revenue</div>
-                        <div className="stat-value">${stats.revenue}+</div>
+                        <div className="stat-value">${Math.floor(stats.revenue)}+</div>
                     </div>
 
                     <div className="stat border border-white">
