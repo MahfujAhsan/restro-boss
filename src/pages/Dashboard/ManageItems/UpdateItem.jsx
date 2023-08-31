@@ -17,7 +17,7 @@ const UpdateItem = () => {
     const [item, setItem] = useState(null);
 
     useEffect(() => {
-        axios.get(`https://bistro-boss-server-v2.vercel.app/menu/${itemId}`)
+        axios.get(`http://localhost:5000/menu/${itemId}`)
             .then(response => {
                 setItem(response.data);
             })
@@ -32,7 +32,7 @@ const UpdateItem = () => {
 
 
     const onSubmit = async (data) => {
-        await axios.patch(`https://bistro-boss-server-v2.vercel.app/menu/${itemId}`, data)
+        await axios.patch(`http://localhost:5000/menu/${itemId}`, data)
             .then((response) => {
                 if (response.data.lastErrorObject.updatedExisting === true) {
                     reset()
