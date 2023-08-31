@@ -2,6 +2,7 @@ import { FaGoogle } from "react-icons/fa"
 import { AuthContext } from "../../../providers/AuthProvider"
 import { useContext } from "react"
 import { useLocation, useNavigate } from "react-router-dom";
+import './SocialLogin.css'
 
 
 const SocialLogin = () => {
@@ -18,7 +19,7 @@ const SocialLogin = () => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser)
                 const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email }
-                fetch('http://localhost:5000/users', {
+                fetch('https://bistro-boss-server-v2.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -35,10 +36,12 @@ const SocialLogin = () => {
     }
     return (
         <div>
-            <div className="divider"></div>
+            <div className="divider">Or</div>
             <div className="w-full text-center my-4">
-                <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline">
-                    <FaGoogle />
+                <button onClick={handleGoogleSignIn} className="btn bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-white font-bold w-10/12 mx-auto">
+                    <span className="flex items-center">
+                        <FaGoogle size={24} color="violet" />oogle
+                    </span>
                 </button>
             </div>
         </div>

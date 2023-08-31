@@ -44,19 +44,19 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
 
             // get and set token
-            if(currentUser) {
-                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
-                .then((data) => {
-                    localStorage.setItem('access-token', data.data.token)
-                    setLoading(false);
-                })
+            if (currentUser) {
+                axios.post('https://bistro-boss-server-v2.vercel.app/jwt', { email: currentUser.email })
+                    .then((data) => {
+                        localStorage.setItem('access-token', data.data.token)
+                        setLoading(false);
+                    })
             } else {
                 localStorage.removeItem('access-token')
             }
 
 
 
-            
+
         })
         return () => {
             return unsubscribe();

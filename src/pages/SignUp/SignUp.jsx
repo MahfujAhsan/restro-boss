@@ -23,8 +23,8 @@ const SignUp = () => {
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        const saveUser = {name: data.name, email: data.email}
-                        fetch('http://localhost:5000/users', {
+                        const saveUser = { name: data.name, email: data.email }
+                        fetch('https://bistro-boss-server-v2.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -56,52 +56,49 @@ const SignUp = () => {
             <Helmet>
                 <title>Bistro Boss | Sign Up</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className='md:w-1/2'>
+            <div className="hero min-h-screen bg-base-200 rounded-3xl shadow-2xl">
+                <div className="hero-content flex-col lg:flex-row-reverse w-full justify-evenly">
+                    <div className='md:w-1/2 '>
                         <img className='object-cover' src={singUpBanner} alt="" />
                     </div>
-                    <form onSubmit={handleSubmit(onSubmit)} className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+                    <form onSubmit={handleSubmit(onSubmit)} className="card md:w-1/2 max-w-lg shadow-2xl bg-base-100">
                         <div className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span className="label-text text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 font-semibold">Name</span>
                                 </label>
                                 <input type="text" {...register("name", { required: true })} placeholder="Your name" name='name' className="input input-bordered" />
                                 {errors.name && <span className='mt-2 ml-1 text-[#CA4142] font-semibold text-xs'>Name is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Photo URL</span>
+                                    <span className="label-text text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 font-semibold">Photo URL</span>
                                 </label>
                                 <input type="text" {...register("photoURL", { required: true })} placeholder="photo URL" className="input input-bordered" />
                                 {errors.photoURL && <span className='mt-2 ml-1 text-[#CA4142] font-semibold text-xs'>Name is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 font-semibold">Email</span>
                                 </label>
                                 <input type="email" {...register("email", { required: true })} placeholder="E-mail" name='email' className="input input-bordered" />
                                 {errors.email && <span className='mt-2 ml-1 text-[#CA4142] font-semibold text-xs'>Email is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 font-semibold">Password</span>
                                 </label>
                                 <input type="password" {...register("password", { required: true, minLength: 6, maxLength: 20, pattern: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/ })} placeholder="Private Key" name='password' className="input input-bordered" />
                                 {errors.password?.type === 'required' && <span className='mt-2 ml-1 text-[#CA4142] font-semibold text-xs'>Password is required</span>}
                                 {errors.password?.type === 'minLength' && <span className='mt-2 ml-1 text-[#CA4142] font-semibold text-xs'>Password must be 6 characters</span>}
                                 {errors.password?.type === 'maxLength' && <span className='mt-2 ml-1 text-[#CA4142] font-semibold text-xs'>Less then 20 characters</span>}
                                 {errors.password?.type === 'pattern' && <span className='mt-2 ml-1 text-[#CA4142] font-semibold text-xs'>Password must have one Uppercase, one Lowercase, one Number & one Special character</span>}
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="sign up" />
+                                <input className="btn bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-white font-bold text-xs" type="submit" value="sign up" />
                             </div>
                         </div>
-                        <p><small>Already have an account? <Link to="/login">Login</Link></small></p>
+                        <p className='text-center'><small className='font-semibold'>Already have an account? </small> <Link to="/login" className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 font-semibold'>Login</Link></p>
                         <SocialLogin />
                     </form>
                 </div>

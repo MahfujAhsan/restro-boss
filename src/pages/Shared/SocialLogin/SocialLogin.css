@@ -1,0 +1,11 @@
+.divider {
+    padding: 0px 25px;
+}
+
+.divider:before {
+    background: linear-gradient(to bottom, #be185d, #7e22ce);
+}
+.divider:after {
+    background: linear-gradient(to bottom, #be185d, #7e22ce);
+}
+

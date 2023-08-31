@@ -15,7 +15,7 @@ const AllUsers = () => {
     })
 
     const handleMakeAdmin = (user) => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://bistro-boss-server-v2.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -37,7 +37,7 @@ const AllUsers = () => {
         console.log(user)
     }
 
-    if(isLoading) {
+    if (isLoading) {
         return <div className="h-screen flex justify-center items-center">
             <FaSpinner size={90} color="purple" />
         </div>
@@ -68,10 +68,10 @@ const AllUsers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role === 'admin' ? <span className="uppercase text-xs bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 px-4 py-2 rounded-md font-semibold shadow-inner shadow-white text-center">Admin</span> :
-                                    <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-pink-700 text-white"><FaUserShield size={24}/></button>
+                                    <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-pink-700 text-white"><FaUserShield size={24} /></button>
                                 }</td>
                                 <td>
-                                    <button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600 text-white"><FaTrashAlt size={20}/></button>
+                                    <button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600 text-white"><FaTrashAlt size={20} /></button>
                                 </td>
                             </tr>)
                         }

@@ -22,7 +22,7 @@ const MyCart = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/carts/${item._id}`, {
+        fetch(`https://bistro-boss-server-v2.vercel.app/carts/${item._id}`, {
           method: 'DELETE',
         })
           .then(res => res.json())
@@ -66,7 +66,7 @@ const MyCart = () => {
           </thead>
           <tbody>
             {
-              cart.map((item, index) => <tr className = "text-white" key={item._id}>
+              cart.map((item, index) => <tr className="text-white" key={item._id}>
                 <td >
                   {index + 1}
                 </td>
@@ -84,7 +84,7 @@ const MyCart = () => {
                 </td>
                 <td className="text-end">${item.price}</td>
                 <td className="text-end">
-                  <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white"><FaTrashAlt size={20}/></button>
+                  <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600 text-white"><FaTrashAlt size={20} /></button>
                 </td>
               </tr>)
             }

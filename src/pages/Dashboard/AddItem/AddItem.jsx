@@ -9,7 +9,7 @@ const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 const AddItem = () => {
   const [axiosSecure] = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
-  const img_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_token}`
+  const img_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_token}`;
 
   const onSubmit = data => {
     const formData = new FormData();
@@ -64,13 +64,20 @@ const AddItem = () => {
                 <option>salad</option>
                 <option>dessert</option>
                 <option>drinks</option>
+                <option>popular</option>
+                <option>offered</option>
               </select>
             </div>
             <div className="form-control w-full ml-4">
               <label className="label">
                 <span className="label-text font-semibold text-slate-500">Price*</span>
               </label>
-              <input type="number" {...register("price", { required: true })} placeholder="Type here" className="input input-bordered w-full border border-purple-700" />
+              <input type="number" step="any" {...register('price', {
+                min: 0,
+                max: 100,
+                pattern: /^-?\d+(\.\d+)?$/, // Only allow positive integers
+                required: true
+              })} placeholder="Type here" className="input input-bordered w-full border border-purple-700" />
             </div>
           </div>
         </div>
