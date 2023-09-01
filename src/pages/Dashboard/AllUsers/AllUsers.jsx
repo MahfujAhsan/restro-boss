@@ -34,7 +34,38 @@ const AllUsers = () => {
     }
 
     const handleDelete = (user) => {
-        console.log(user)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/users/${user._id}`)
+                    .then(res => {
+                        if (res.status === 200) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                `${user?.name} has been deleted.`,
+                                'success'
+                            )
+                        }
+                        if (res.data.error) {
+                            Swal.fire(
+                                'Error',
+                                `${res.data.error}`,
+                                'error'
+                            )
+                        }
+                    })
+            }
+
+        })
+
     }
 
     if (isLoading) {
@@ -58,6 +89,7 @@ const AllUsers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -70,6 +102,9 @@ const AllUsers = () => {
                                 <td>{user.role === 'admin' ? <span className="uppercase text-xs bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 px-4 py-2 rounded-md font-semibold shadow-inner shadow-white text-center">Admin</span> :
                                     <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-pink-700 text-white"><FaUserShield size={24} /></button>
                                 }</td>
+                                <td>
+                                    <img className="w-14 h-14 rounded-full" src={user.image} alt="user" />
+                                </td>
                                 <td>
                                     <button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600 text-white"><FaTrashAlt size={20} /></button>
                                 </td>
