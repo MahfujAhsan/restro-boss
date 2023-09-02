@@ -28,22 +28,32 @@ const Navbar = () => {
             <NavLink className="hover:text-white" to="/order/salad">Order Food</NavLink>
         </li>
         {
-            isAdmin ? <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
-                <NavLink className="hover:text-white" to="/dashboard/admin-home">Dashboard</NavLink>
-            </li> : <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
-                    <NavLink className="hover:text-white" to="/dashboard/user-home">Dashboard</NavLink>
-            </li>
+            user && <>
+                {
+                    isAdmin ? <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
+                        <NavLink className="hover:text-white" to="/dashboard/admin-home">Dashboard</NavLink>
+                    </li> : <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
+                        <NavLink className="hover:text-white" to="/dashboard/user-home">Dashboard</NavLink>
+                    </li>
+                }
+            </>
         }
-        <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
-            <Link className="hover:text-white" to="/dashboard/my-cart">
-                <button className="flex items-center space-x-2">
-                    <BiSolidCartAdd size={28} />
-                    <div className="badge">
-                        <p className="mb-[2px]">+{cart?.length || 0}</p>
-                    </div>
-                </button>
-            </Link>
-        </li>
+        {
+            user && <>
+                {
+                    isAdmin ? <></> : <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
+                        <Link className="hover:text-white" to="/dashboard/my-cart">
+                            <button className="flex items-center space-x-2">
+                                <BiSolidCartAdd size={28} />
+                                <div className="badge">
+                                    <p className="mb-[2px]">+{cart?.length || 0}</p>
+                                </div>
+                            </button>
+                        </Link>
+                    </li>
+                }
+            </>
+        }
     </>
     return (
         <>
@@ -76,9 +86,9 @@ const Navbar = () => {
                                 <FiLogOut size={20} />
                             </button>
                         </> : <>
-                                <Link className="bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700  px-5 py-[7px] rounded-md uppercase text-sm flex items-center space-x-2 font-semibold hover:bg-opacity-10 transition-all" to="/login">
+                            <Link className="bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700  px-5 py-[7px] rounded-md uppercase text-sm flex items-center space-x-2 font-semibold hover:bg-opacity-10 transition-all" to="/login">
                                 <span>Login</span>
-                                <FiLogIn size={20}/>
+                                <FiLogIn size={20} />
                             </Link>
                         </>
                     }

@@ -34,11 +34,14 @@ const Dashboard = () => {
 
                         </> : <>
                             <li><NavLink className="hover:text-white" to='/dashboard/user-home'><FaHome /> User Home</NavLink></li>
-                            <li><NavLink className="hover:text-white" to='/dashboard/reservations'><FaCalendarAlt /> Reservations</NavLink></li>
-                            <li><NavLink className="hover:text-white" to='/dashboard/history'><FaWallet /> Payment History</NavLink></li>
+                            <li><NavLink className="hover:text-white" to='/dashboard/reservation'><FaCalendarAlt /> Reservations</NavLink></li>
+                            <li><NavLink className="hover:text-white" to='/dashboard/payment-history'><FaCalendarAlt /> Payment History</NavLink></li>
+
                             <li>
                                 <NavLink className="hover:text-white" to='/dashboard/my-cart'><FaShoppingCart /> MyCart <span className="badge badge-secondary">+{cart?.length || 0}</span></NavLink>
                             </li>
+                            <li><NavLink className="hover:text-white" to='/dashboard/review'><FaWallet /> Add Review</NavLink></li>
+                            <li><NavLink className="hover:text-white" to='/dashboard/booking'><FaWallet /> My Booking</NavLink></li>
                         </>
                     }
 
@@ -48,10 +51,10 @@ const Dashboard = () => {
                         <NavLink className="hover:text-white text-base" to="/"><FaHome size={22} /> Home</NavLink>
                     </li>
                     <li>
-                        <NavLink className="hover:text-white text-base" to="/menu"><BiMenuAltLeft size={22}/> Menu</NavLink>
+                        <NavLink className="hover:text-white text-base" to="/menu"><BiMenuAltLeft size={22} /> Menu</NavLink>
                     </li>
                     <li>
-                        <NavLink className="hover:text-white text-base" to="/order/salad"><FaShoppingBag size={22}/> Shop</NavLink>
+                        <NavLink className="hover:text-white text-base" to="/order/salad"><FaShoppingBag size={22} /> Shop</NavLink>
                     </li>
                     <li>
                         <NavLink className="hover:text-white text-base" to="/"> <BiSolidEnvelope size={22} /> Contact</NavLink>
