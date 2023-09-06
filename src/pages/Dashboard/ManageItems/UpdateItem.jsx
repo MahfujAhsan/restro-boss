@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { FaSpinner } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const UpdateItem = () => {
@@ -17,9 +18,9 @@ const UpdateItem = () => {
     const [item, setItem] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/menu/${itemId}`)
+        axios.get(`http://localhost:5000/api/v1/menu/${itemId}`)
             .then(response => {
-                setItem(response.data);
+                setItem(response.data.data);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
@@ -32,9 +33,9 @@ const UpdateItem = () => {
 
 
     const onSubmit = async (data) => {
-        await axios.patch(`http://localhost:5000/menu/${itemId}`, data)
+        await axios.patch(`http://localhost:5000/api/v1/menu/${itemId}`, data)
             .then((response) => {
-                if (response.data.lastErrorObject.updatedExisting === true) {
+                if (response.data.success) {
                     reset()
                     Swal.fire({
                         position: 'top-end',
@@ -52,8 +53,10 @@ const UpdateItem = () => {
 
 
     return (
-        <section className="">
-
+        <section>
+            <Helmet>
+                <title>Bistro Boss | Update Item</title>
+            </Helmet>
             <div className=" text-center p-8 h-screen flex justify-center items-center flex-col">
                 <h3 className="text-4xl font-bold my-8 uppercase text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700">Update Items</h3>
                 <form onSubmit={handleSubmit(onSubmit)} className="w-full">

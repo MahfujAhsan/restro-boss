@@ -13,13 +13,13 @@ const Order = () => {
     const categories = ['salad', 'pizza', 'soup', 'dessert', 'drinks']
     const initialIndex = categories.indexOf(category)
     const [tabIndex, setTabIndex] = useState(initialIndex)
-    const [menu] = useMenu()
-    // const offered = menu.filter(item => item.category === 'offered');
-    const desserts = menu.filter(item => item.category === 'dessert');
-    const soup = menu.filter(item => item.category === 'soup');
-    const salad = menu.filter(item => item.category === 'salad');
-    const pizza = menu.filter(item => item.category === 'pizza');
-    const drinks = menu.filter(item => item.category === 'drinks');
+    const [menu] = useMenu();
+    const offered = menu?.filter(item => item.category === 'offered');
+    const desserts = menu?.filter(item => item.category === 'dessert');
+    const soup = menu?.filter(item => item.category === 'soup');
+    const salad = menu?.filter(item => item.category === 'salad');
+    const pizza = menu?.filter(item => item.category === 'pizza');
+    const drinks = menu?.filter(item => item.category === 'drinks');
     return (
         <div>
             <Helmet>
@@ -34,11 +34,9 @@ const Order = () => {
                     <Tab>Soup</Tab>
                     <Tab>Dessert</Tab>
                     <Tab>Drinks</Tab>
+                    <Tab>Offered</Tab>
                 </TabList>
 
-                {/* <TabPanel>
-                    <OrderTab items={offered} />
-                </TabPanel> */}
                 <TabPanel>
                     <OrderTab items={salad} />
                 </TabPanel>
@@ -53,6 +51,10 @@ const Order = () => {
                 </TabPanel>
                 <TabPanel>
                     <OrderTab items={drinks} />
+                </TabPanel>
+
+                <TabPanel>
+                    <OrderTab items={offered} />
                 </TabPanel>
             </Tabs>
         </div>

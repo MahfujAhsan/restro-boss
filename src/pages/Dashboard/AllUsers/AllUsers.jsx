@@ -3,34 +3,41 @@ import { Helmet } from "react-helmet-async"
 import { FaSpinner, FaTrashAlt, FaUserShield } from "react-icons/fa"
 import Swal from "sweetalert2"
 import useAxiosSecure from "../../../hooks/useAxiosSecure"
-import './AllUsers.css'
+import './AllUsers.css';
 
 
 const AllUsers = () => {
     const [axiosSecure] = useAxiosSecure();
 
     const { data: users = [], refetch, isLoading } = useQuery(['users'], async () => {
-        const res = await axiosSecure.get('/users')
+        const res = await axiosSecure.get('/api/v1/users')
         return res.data;
-    })
+    });
 
     const handleMakeAdmin = (user) => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
-            method: 'PATCH'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount) {
-                    refetch();
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: `${user.name} is an Admin Now!`,
-                        showConfirmButton: false,
-                        timer: 1500
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `admin access goes to ${user.name}`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Make Admin!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`http://localhost:5000/api/v1/users/admin/${user._id}`)
+                    .then(response => {
+                        if (response.status === 200) {
+                            refetch();
+                            Swal.fire(
+                                'Success!',
+                                `${user?.name} is Admin now.`,
+                                'success'
+                            )
+                        }
                     })
-                }
-            })
+            }
+        })
     }
 
     const handleDelete = (user) => {
@@ -44,7 +51,7 @@ const AllUsers = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/users/${user._id}`)
+                axiosSecure.delete(`/api/v1/users/${user._id}`)
                     .then(res => {
                         if (res.status === 200) {
                             refetch();

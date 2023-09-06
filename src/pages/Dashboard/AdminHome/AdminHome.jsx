@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Bar, BarChart, CartesianGrid, Cell, XAxis, YAxis, PieChart, Pie, ResponsiveContainer, Legend, Tooltip } from "recharts";
 import './AdminHome.css'
 import { FaSpinner } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 
 const AdminHome = () => {
@@ -13,7 +14,7 @@ const AdminHome = () => {
     const { data: stats = {}, isLoading } = useQuery({
         queryKey: ["admin-stats"],
         queryFn: async () => {
-            const res = await axiosSecure('/admin-stats');
+            const res = await axiosSecure('/api/v1/admin-stats');
             return res.data;
         }
     });
@@ -21,7 +22,7 @@ const AdminHome = () => {
     const { data: chartData = [] } = useQuery({
         queryKey: ['chartData'],
         queryFn: async () => {
-            const res = await axiosSecure('/order-stats');
+            const res = await axiosSecure('/api/v1/order-stats');
             return res.data;
         }
     })
@@ -59,6 +60,9 @@ const AdminHome = () => {
     }
     return (
         <div className="w-full">
+            <Helmet>
+                <title>Bistro Boss | Admin Home</title>
+            </Helmet>
             <h2 className="text-3xl text-center uppercase font-semibold my-16"><span className="font-mono text-slate-500">Welcome Back,</span> <span className="font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700">{user?.displayName}</span></h2>
             <div className="flex justify-center">
                 <div className="stats shadow text-center w-full mb-16 rounded-md bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-white">

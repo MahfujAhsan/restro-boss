@@ -35,11 +35,9 @@ const Reservation = () => {
             phone: data.phone,
             email: data.email
         }
-        console.log(bookingInfo)
-        axiosSecure.post('http://localhost:5000/booking', bookingInfo)
+        axiosSecure.post('http://localhost:5000/api/v1/booking', bookingInfo)
             .then((res) => {
-                console.log(res.data)
-                if (res.data.acknowledged === true) {
+                if (res.status === 201) {
                     reset();
                     Swal.fire({
                         position: 'top-end',
@@ -56,7 +54,7 @@ const Reservation = () => {
             <SectionTitle subHeading="Reservation" heading="Book a Table" />
 
             <form onSubmit={handleSubmit(onSubmit)} className="text-center">
-                <div className="grid grid-cols-3 gap-x-8 gap-y-8">
+                <div className="grid grid-cols-3 gap-x-8 gap-y-4">
                     <div>
                         <label className="label">
                             <span className="label-text font-semibold text-slate-500">Date*</span>

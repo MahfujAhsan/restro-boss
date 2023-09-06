@@ -25,7 +25,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const saveUser = { name: data.name, email: data.email, image: data.photoURL }
-                        fetch('http://localhost:5000/users', {
+                        fetch('http://localhost:5000/api/v1/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -34,7 +34,7 @@ const SignUp = () => {
                         })
                             .then(res => res.json())
                             .then(data => {
-                                if (data.insertedId) {
+                                if (data._id) {
                                     reset();
                                     Swal.fire({
                                         position: 'top-end',

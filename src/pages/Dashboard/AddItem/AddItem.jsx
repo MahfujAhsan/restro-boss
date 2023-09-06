@@ -2,6 +2,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle"
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
@@ -24,8 +25,8 @@ const AddItem = () => {
           const imgURL = imgResponse.data.display_url;
           const { name, price, category, recipe } = data;
           const newItem = { name, recipe, image: imgURL, category, price: parseFloat(price) }
-          axiosSecure.post('/menu', newItem).then(data => {
-            if (data.data.insertedId) {
+          axiosSecure.post('/api/v1/menu', newItem).then(data => {
+            if (data.status === 201) {
               reset();
               Swal.fire({
                 position: 'top-end',
@@ -42,6 +43,9 @@ const AddItem = () => {
 
   return (
     <div className="w-full px-10">
+      <Helmet>
+        <title>Bistro Boss | Add Item</title>
+      </Helmet>
       <SectionTitle subHeading="What's New?" heading="Add an Item" />
       <form onSubmit={handleSubmit(onSubmit)} className="w-full text-center">
         <div className="form-control w-full">

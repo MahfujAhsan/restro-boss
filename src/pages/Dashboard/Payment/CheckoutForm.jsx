@@ -17,7 +17,7 @@ const CheckoutForm = ({ cart, price }) => {
 
     useEffect(() => {
         if (price > 0) {
-            axiosSecure.post("/create-payment-intent", { price })
+            axiosSecure.post("/api/v1/create-payment-intent", { price })
                 .then(res => {
                     setClientSecret(res.data.clientSecret)
                 })
@@ -37,8 +37,6 @@ const CheckoutForm = ({ cart, price }) => {
             return;
         }
 
-        console.log(card)
-
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card,
@@ -48,12 +46,9 @@ const CheckoutForm = ({ cart, price }) => {
             setCardError(error.message)
         } else {
             setCardError('')
-            console.log(paymentMethod)
         }
 
         setProcessing(true)
-
-        console.log(clientSecret)
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
@@ -71,7 +66,7 @@ const CheckoutForm = ({ cart, price }) => {
         if (confirmError) {
             console.log(confirmError)
         }
-        console.log(paymentIntent)
+
         setProcessing(false)
 
         if (paymentIntent.status === 'succeeded') {
@@ -90,7 +85,6 @@ const CheckoutForm = ({ cart, price }) => {
             axiosSecure.post("/payments", payment)
                 .then(res => {
                     console.log(res.data)
-
                 })
         }
     }

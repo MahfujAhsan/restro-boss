@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import './ManageItem.css'
+import { Helmet } from "react-helmet-async";
 
 
 const ManageItems = () => {
@@ -22,9 +23,8 @@ const ManageItems = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/menu/${item._id}`)
+                axiosSecure.delete(`/api/v1/menu/${item._id}`)
                     .then(res => {
-                        console.log(res)
                         if (res.status === 200) {
                             refetch();
                             Swal.fire(
@@ -44,6 +44,9 @@ const ManageItems = () => {
 
     return (
         <div className="w-full">
+            <Helmet>
+                <title>Bistro Boss | Manage Items</title>
+            </Helmet>
             <SectionTitle heading="Manage All Items" subHeading="Hurry Up" />
             <div className="overflow-x-auto">
                 <table className="table text-slate-100">

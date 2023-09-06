@@ -14,11 +14,11 @@ const useMenu = () => {
     const { data: menu = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['menu'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/menu');
+            const res = await fetch('http://localhost:5000/api/v1/menu');
             return res.json();
         }
     });
-    return [menu, loading, refetch]
+    return [menu.data, loading, refetch]
 }
 
 export default useMenu;

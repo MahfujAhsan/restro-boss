@@ -20,7 +20,7 @@ const useBooking = () => {
         //     return response.json()
         // },
         queryFn: async () => {
-            const response = await axiosSecure(`/booking?email=${user?.email}`)
+            const response = await axiosSecure(`/api/v1/booking?email=${user?.email}`)
             return response.data;
         },
     })

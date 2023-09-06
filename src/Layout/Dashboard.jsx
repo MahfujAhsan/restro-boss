@@ -20,7 +20,7 @@ const Dashboard = () => {
                 <Outlet />
 
             </div>
-            <div className="drawer-side  bg-gradient-to-r from-[#D1A054] via-bg-[#cc851b] to-pink-700 rounded-tl-3xl rounded-bl-3xl">
+            <div className="drawer-side  bg-gradient-to-r from-[#D1A054] via-bg-pink-700 to-pink-700 rounded-tl-3xl rounded-bl-3xl">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 text-base-content text-lg font-semibold">
 
