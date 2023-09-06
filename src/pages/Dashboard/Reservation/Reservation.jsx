@@ -35,7 +35,7 @@ const Reservation = () => {
             phone: data.phone,
             email: data.email
         }
-        axiosSecure.post('http://localhost:5000/api/v1/booking', bookingInfo)
+        axiosSecure.post('https://bistro-boss-server-v2.vercel.app/api/v1/booking', bookingInfo)
             .then((res) => {
                 if (res.status === 201) {
                     reset();
