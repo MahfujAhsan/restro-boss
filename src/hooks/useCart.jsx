@@ -12,7 +12,7 @@ const useCart = () => {
         queryKey: ['carts', user?.email],
         enabled: !loading,
         // queryFn: async () => {
-        //     const response = await fetch(`https://bistro-boss-server-v2.vercel.app/carts?email=${user?.email}`, {
+        //     const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`, {
         //         headers: {
         //             authorization: `Bearer ${token}`
         //         }
@@ -20,11 +20,17 @@ const useCart = () => {
         //     return response.json()
         // },
         queryFn: async () => {
-            const response = await axiosSecure(`/api/v1/carts?email=${user?.email}`)
-            return response.data;
+            try {
+                const response = await axiosSecure(`/api/v1/carts?email=${user?.email}`)
+                return response?.data;
+            } catch (error) {
+                // Handle the error, e.g., log it or display an error message.
+                console.error("Error fetching cart data:", error);
+                throw error; // Rethrow the error to propagate it to the caller.
+            }
         },
     })
     return [cart, refetch]
 }
 
-export default useCart
+export default useCart;

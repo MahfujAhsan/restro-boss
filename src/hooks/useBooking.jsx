@@ -12,7 +12,7 @@ const useBooking = () => {
         queryKey: ['booking', user?.email],
         enabled: !loading,
         // queryFn: async () => {
-        //     const response = await fetch(`https://bistro-boss-server-v2.vercel.app/carts?email=${user?.email}`, {
+        //     const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`, {
         //         headers: {
         //             authorization: `Bearer ${token}`
         //         }

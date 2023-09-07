@@ -1,16 +1,15 @@
-import { useContext } from 'react';
 import singUpBanner from '../../assets/others/authentication2.png';
-import { AuthContext } from '../../providers/AuthProvider';
 import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+import useAuth from '../../hooks/useAuth';
 
 const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-    const { createUser, updateUserProfile } = useContext(AuthContext)
+    const { createUser, updateUserProfile } = useAuth();
 
     const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const saveUser = { name: data.name, email: data.email, image: data.photoURL }
-                        fetch('https://bistro-boss-server-v2.vercel.app/api/v1/users', {
+                        fetch('http://localhost:5000/api/v1/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

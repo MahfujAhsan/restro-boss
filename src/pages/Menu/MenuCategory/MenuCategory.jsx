@@ -9,7 +9,7 @@ const MenuCategory = ({ items, title, img }) => {
       {title && <Cover img={img} title={title} />}
       <div className="grid md:grid-cols-2 gap-10 my-16 text-left">
         {
-          items.map((item) => <MenuItem key={item._id} item={item} />)
+          items?.map((item) => <MenuItem key={item._id} item={item} />)
         }
       </div>
       <Link to={`/order/${title}`}>

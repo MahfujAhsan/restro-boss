@@ -3,6 +3,7 @@ import useCart from "../../../hooks/useCart";
 import useBooking from "../../../hooks/useBooking";
 import useReviews from "../../../hooks/useReviews";
 import usePayments from "../../../hooks/usePayments";
+import { Helmet } from "react-helmet-async";
 
 
 const UserHome = () => {
@@ -14,6 +15,9 @@ const UserHome = () => {
 
     return (
         <div className="grid grid-cols-2 place-items-center h-screen text-white gap-x-8">
+            <Helmet>
+                <title>Bistro Boss | User Home</title>
+            </Helmet>
             <div className="text-center bg-gradient-to-r from-pink-700 via-purple-700 to-pink-700 w-full rounded-md py-16">
 
                 <img className="h-40 w-40 mx-auto rounded-full" src={user?.photoURL} alt="" />

@@ -7,6 +7,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import { FaPhoneAlt, FaClock, FaLocationArrow } from 'react-icons/fa';
+import { Helmet } from "react-helmet-async";
 // import { ImClock2 } from 'react-icons/im';
 // import { IoLocationSharp } from 'react-icons/io';
 
@@ -35,7 +36,7 @@ const Reservation = () => {
             phone: data.phone,
             email: data.email
         }
-        axiosSecure.post('https://bistro-boss-server-v2.vercel.app/api/v1/booking', bookingInfo)
+        axiosSecure.post('http://localhost:5000/api/v1/booking', bookingInfo)
             .then((res) => {
                 if (res.status === 201) {
                     reset();
@@ -52,7 +53,9 @@ const Reservation = () => {
     return (
         <div>
             <SectionTitle subHeading="Reservation" heading="Book a Table" />
-
+            <Helmet>
+                <title>Bistro Boss | Reservation</title>
+            </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className="text-center">
                 <div className="grid grid-cols-3 gap-x-8 gap-y-4">
                     <div>

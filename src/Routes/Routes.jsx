@@ -22,9 +22,10 @@ import UpdateItem from "../pages/Dashboard/ManageItems/UpdateItem";
 import DisplayError from "../pages/Shared/DisplayError/DisplayError";
 import Reservation from "../pages/Dashboard/Reservation/Reservation";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
-import AddReview from "../pages/AddReview/AddReview";
-import MyBooking from "../pages/MyBooking/MyBooking";
 import NotFound from "../pages/Shared/NotFound/NotFound";
+import AddReview from "../pages/Dashboard/AddReview/AddReview";
+import MyBooking from "../pages/Dashboard/MyBooking/MyBooking";
+import Contact from "../pages/Contact/Contact";
 
 export const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
             {
                 path: "signup",
                 element: <SignUp />
+            },
+            {
+                path: "contact",
+                element: <Contact />
             },
             {
                 path: "secret",
@@ -114,7 +119,6 @@ export const router = createBrowserRouter([
             
         ]
     },
-
     {
         path: '*', // Match any path
         element: <NotFound />// Replace 'NotFound' with your 404 component

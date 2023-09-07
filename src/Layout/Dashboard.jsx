@@ -57,7 +57,7 @@ const Dashboard = () => {
                         <NavLink className="hover:text-white text-base" to="/order/salad"><FaShoppingBag size={22} /> Shop</NavLink>
                     </li>
                     <li>
-                        <NavLink className="hover:text-white text-base" to="/"> <BiSolidEnvelope size={22} /> Contact</NavLink>
+                        <NavLink className="hover:text-white text-base" to="/contact"> <BiSolidEnvelope size={22} /> Contact</NavLink>
                     </li>
                 </ul>
 

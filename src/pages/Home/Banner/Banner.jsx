@@ -14,7 +14,7 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 const Banner = () => {
     return (
         <LazyLoadComponent>
-            <Carousel transitionTime={300} onSwipeMove useKeyboardArrows>
+            <Carousel transitionTime={300} onSwipeMove useKeyboardArrows showThumbs={false}>
                 <div>
                     <LazyLoadImage
                         src={image1}

@@ -1,6 +1,7 @@
 import SectionTitle from "../../../components/SectionTitle/SectionTitle"
 import usePayments from "../../../hooks/usePayments"
 import useAuth from "../../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const PaymentHistory = () => {
@@ -33,6 +34,9 @@ const PaymentHistory = () => {
   return (
     <div>
       <SectionTitle subHeading="At a Glance!" heading="PAYMENT HISTORY" />
+      <Helmet>
+        <title>Bistro Boss | Payment History</title>
+      </Helmet>
       <div className="w-11/12 mx-auto mt-12">
         <h2 className="text-3xl text-white uppercase text-center mb-8">Total Payments: {payments.length}</h2>
         <div className="overflow-x-auto">

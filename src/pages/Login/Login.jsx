@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { AuthContext } from '../../providers/AuthProvider';
 import singUpBanner from '../../assets/others/authentication2.png';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
@@ -11,9 +10,9 @@ import { FiLogIn } from 'react-icons/fi';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
-
     const [disabled, setDisabled] = useState(true);
+
+    const { signIn } = useAuth();
 
     const navigate = useNavigate();
 
@@ -21,7 +20,7 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || "/";
 
-    const { signIn } = useAuth();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     useEffect(() => {
         loadCaptchaEnginge(6);

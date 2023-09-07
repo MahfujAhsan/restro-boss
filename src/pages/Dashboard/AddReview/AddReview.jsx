@@ -1,16 +1,17 @@
-import SectionTitle from "../../components/SectionTitle/SectionTitle";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css'
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import useAuth from "../../hooks/useAuth";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const AddReview = () => {
   const [rating, setRating] = useState(0);
-  const error = "Please Select At least One Star";
+  const error = "(*****) Please Select At least One Star";
   const {user} = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const { register, handleSubmit, reset } = useForm();
@@ -46,10 +47,13 @@ const AddReview = () => {
   return (
     <div>
       <SectionTitle subHeading="Sharing is Caring!!!" heading="GIVE A REVIEW..."/>
+      <Helmet>
+        <title>Bistro Boss | Add Review</title>
+      </Helmet>
       <div className="mx-auto text-center">
         <h3 className="text-3xl uppercase font-semibold text-white mb-2">Rate Us!</h3>
         <Rating style={{ maxWidth: 250, margin: 'auto' }} value={rating} onChange={setRating} />
-        {rating === 0 && <p className="text-xs my-1 font-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700">{error}</p>}
+        {rating === 0 && <p className="text-xs my-1 font-bold uppercase text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-pink-700 to-pink-900">{error}</p>}
 
         <form onSubmit={handleSubmit(onSubmit)} className="w-10/12 mx-auto mt-8">
           <div className="form-control w-full">

@@ -1,5 +1,3 @@
-
-
 const Secret = () => {
   return (
     <div>
