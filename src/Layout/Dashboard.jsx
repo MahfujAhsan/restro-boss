@@ -5,24 +5,21 @@ import useAdmin from "../hooks/useAdmin";
 import './Dashboard.css'
 import { BiMenuAltLeft, BiSolidEnvelope } from 'react-icons/bi';
 
-
 const Dashboard = () => {
     const [cart] = useCart();
-    // TODO
-    // const isAdmin = true;
     const [isAdmin] = useAdmin();
 
     return (
-        <div className="drawer lg:drawer-open ">
+        <div className="drawer lg:drawer-open font-roboto">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content px-4 bg-black rounded-tr-3xl rounded-br-3xl shadow-2xl shadow-[#cc851b]">
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                 <Outlet />
-
             </div>
-            <div className="drawer-side  bg-gradient-to-r from-[#D1A054] via-bg-pink-700 to-pink-700 rounded-tl-3xl rounded-bl-3xl">
+            <div className={`drawer-side bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 rounded-tl-3xl rounded-bl-3xl`}>
+
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 text-base-content text-lg font-semibold">
+                <ul className="menu p-4 w-auto md:w-80 text-base-content text-lg font-semibold">
 
                     {
                         isAdmin ? <>

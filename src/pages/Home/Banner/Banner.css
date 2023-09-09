@@ -6,3 +6,16 @@
     width: 477px !important;
     margin: auto !important;
 }
+
+.control-dots .dot {
+    height: 20px!important;
+    width: 20px!important;
+}
+
+@media screen and (max-width: 576px) {
+    .control-dots .dot {
+            height: 10px !important;
+            width: 10px !important;
+        }
+}
+

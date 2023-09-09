@@ -14,7 +14,7 @@ const UserHome = () => {
     const [payments] = usePayments();
 
     return (
-        <div className="grid grid-cols-2 place-items-center h-screen text-white gap-x-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 place-items-center h-screen text-white gap-x-8">
             <Helmet>
                 <title>Bistro Boss | User Home</title>
             </Helmet>

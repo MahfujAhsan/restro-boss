@@ -18,7 +18,7 @@ const Category = () => {
 
 
     return (
-        <section>
+        <section className='px-2 md:px-0'>
             <SectionTitle
                 subHeading={"From 11.00am to 10.00pm"}
                 heading={"Order Online"} />
@@ -33,23 +33,23 @@ const Category = () => {
             >
                 <SwiperSlide>
                     <img className='rounded-lg mx-auto' src={slide1} alt="" />
-                    <p className='text-center uppercase mt-3 text-sm tracking-widest font-semibold'>Salad</p>
+                    <p className='text-center uppercase mt-3 text-xs md:text-sm tracking-widest font-semibold'>Salad</p>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img className='rounded-lg mx-auto' src={slide2} alt="" />
-                    <p className='text-center uppercase mt-3 text-sm tracking-widest font-semibold'>Pizza</p>
+                    <p className='text-center uppercase mt-3 text-xs md:text-sm tracking-widest font-semibold'>Pizza</p>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img className='rounded-lg mx-auto' src={slide3} alt="" />
-                    <p className='text-center uppercase mt-3 text-sm tracking-widest font-semibold'>Soup</p>
+                    <p className='text-center uppercase mt-3 text-xs md:text-sm tracking-widest font-semibold'>Soup</p>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img className='rounded-lg mx-auto' src={slide4} alt="" />
-                    <p className='text-center uppercase mt-3 text-sm tracking-widest font-semibold'>Dessert</p>
+                    <p className='text-center uppercase mt-3 text-xs md:text-sm tracking-widest font-semibold'>Dessert</p>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img className='rounded-lg mx-auto' src={slide5} alt="" />
-                    <p className='text-center uppercase mt-3 text-sm tracking-widest font-semibold'>Drinks</p>
+                    <p className='text-center uppercase mt-3 text-xs md:text-sm tracking-widest font-semibold'>Drinks</p>
                 </SwiperSlide>
                
             </Swiper>

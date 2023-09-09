@@ -14,10 +14,11 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 const Banner = () => {
     return (
         <LazyLoadComponent>
-            <Carousel transitionTime={300} onSwipeMove useKeyboardArrows showThumbs={false}>
+            <Carousel transitionTime={300} onSwipeMove useKeyboardArrows showThumbs={false} >
                 <div>
                     <LazyLoadImage
-                        src={image1}
+                        className="h-[400px] md:h-auto"
+                        src={image4}
                         effect="blur"
                         visibleByDefault={image1 === '../../../assets/home/01.jpg'}
                         delayTime={500}
@@ -26,30 +27,35 @@ const Banner = () => {
                 </div>
                 <div>
                     <LazyLoadImage
+                        className="h-[420px] md:h-auto"
                         src={image2}
                         effect="blur"
                     />
                 </div>
                 <div>
                     <LazyLoadImage
+                        className="h-[420px] md:h-auto"
                         src={image3}
                         effect="blur"
                     />
                 </div>
                 <div>
                     <LazyLoadImage
-                        src={image4}
+                        className="h-[420px] md:h-auto"
+                        src={image1}
                         effect="blur"
                     />
                 </div>
                 <div>
                     <LazyLoadImage
+                        className="h-[420px] md:h-auto"
                         src={image5}
                         effect="blur"
                     />
                 </div>
                 <div>
                     <LazyLoadImage
+                        className="h-[420px] md:h-auto"
                         src={image6}
                         effect="blur"
                     />

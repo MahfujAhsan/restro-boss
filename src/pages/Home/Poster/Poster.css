@@ -2,4 +2,13 @@
     background: url('../../../assets//home/chef-service.jpg');
     background-size: cover;
     border-radius: 12px;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 576px) {
+    .poster {
+        /* background-color: ; */
+        background-size: cover;
+        background-position: right;
+    }
 }

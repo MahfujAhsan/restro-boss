@@ -7,7 +7,7 @@ const Main = () => {
   const location = useLocation();
   const noHeaderFooter = location.pathname.includes('login') || location.pathname.includes('signup')
   return (
-    <div>
+    <div className="font-roboto">
         { noHeaderFooter || <Navbar />}
         <Outlet />
         {noHeaderFooter || <Footer />}

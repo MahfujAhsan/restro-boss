@@ -14,7 +14,7 @@ const Contact = () => {
       <Cover img={contactCover} title={"Contact Us"} />
       <div className="w-10/12 mx-auto">
         <SectionTitle subHeading="Visit Us" heading="OUR LOCATION" />
-        <div className="grid grid-cols-3 bg-white border  w-full rounded-2xl py-8 gap-x-4 px-8">
+        <div className="grid md:grid-cols-3 bg-white border  w-full rounded-2xl py-8 gap-x-4 gap-y-8 px-8">
           <div className="text-center border border-white bg-[#F3F3F3] pb-8 rounded-md">
             <div className="bg-[#D1A054] py-2 rounded-b-md">
               <FaPhoneAlt className="w-full" color="white" />

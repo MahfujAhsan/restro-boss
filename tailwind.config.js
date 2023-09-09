@@ -14,7 +14,15 @@ export default {
     '2xl': { min: '1359px' } // Desktop widescreen.
   },
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        roboto: ['Roboto Slab', 'serif'],
+      },
+    },
+    // colors: {
+    //   "dark-purple": "#081A51",
+    //   "light-white": "rgba(255, 255, 255, 0.17)"
+    // }
   },
   daisyui: {
     themes: ["light"],

@@ -18,7 +18,7 @@ const Testimonials = () => {
             .then((data) => setReviews(data))
     }, []);
     return (
-        <section className="my-20">
+        <section className="my-20 mx-2">
             <SectionTitle
                 subHeading="What Our Client Say"
                 heading="Testimonials"
@@ -27,13 +27,13 @@ const Testimonials = () => {
 
                 {
                     reviews.map((review) => <SwiperSlide key={review._id}>
-                        <div className="my-0 mx-24 flex flex-col items-center space-y-2">
+                        <div className="my-0 mx-20 md:mx-24 flex flex-col items-center space-y-2">
                             <Rating
                                 style={{ maxWidth: 180, marginBottom: '15px' }}
                                 value={review.rating}
                                 readOnly
                             />
-                            <img className="w-[70px]" src={quote} alt="" />
+                            <img className="w-[40px] md:w-[70px]" src={quote} alt="" />
                             <p>{review.details.reviewDetail}</p>
                             <h3 className="text-2xl text-orange-400">{review.name}</h3>
                         </div>

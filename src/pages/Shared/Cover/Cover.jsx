@@ -9,7 +9,7 @@ const Cover = ({ img, title }) => {
       strength={-200}
       className='rounded-lg'
     >
-      <div className="hero h-[500px]">
+      <div className="hero h-[420px] md:h-[500px]">
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">

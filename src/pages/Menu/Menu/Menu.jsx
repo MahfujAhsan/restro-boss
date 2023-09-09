@@ -30,39 +30,41 @@ const Menu = () => {
         subHeading="Don't Miss"
         heading="Today's Offer"
       />
-      {/* Offered Menu Items */}
-      <MenuCategory items={offered}
-      title="offered"
-      img={soupImg} />
-      {/* Desserts Menu Items */}
-      <MenuCategory
-        items={desserts}
-        title="dessert"
-        img={dessertImg}
-      />
-      {/* Pizza Menu Items */}
-      <MenuCategory
-        items={pizza}
-        title="pizza"
-        img={pizzaImg}
-      />
-      {/* Salad Menu Items */}
-      <MenuCategory
-        items={salad}
-        title="salad"
-        img={saladImg}
-      />
-      {/* Soup Menu Items */}
-      <MenuCategory
-        items={soup}
-        title="soup"
-        img={soupImg}
-      />
-      <MenuCategory
-        items={drinks}
-        title="drinks"
-        img={soupImg}
-      />
+      <div className='mx-2'>
+        {/* Offered Menu Items */}
+        <MenuCategory items={offered}
+          title="offered"
+          img={soupImg} />
+        {/* Desserts Menu Items */}
+        <MenuCategory
+          items={desserts}
+          title="dessert"
+          img={dessertImg}
+        />
+        {/* Pizza Menu Items */}
+        <MenuCategory
+          items={pizza}
+          title="pizza"
+          img={pizzaImg}
+        />
+        {/* Salad Menu Items */}
+        <MenuCategory
+          items={salad}
+          title="salad"
+          img={saladImg}
+        />
+        {/* Soup Menu Items */}
+        <MenuCategory
+          items={soup}
+          title="soup"
+          img={soupImg}
+        />
+        <MenuCategory
+          items={drinks}
+          title="drinks"
+          img={soupImg}
+        />
+      </div>
     </div>
   )
 }

@@ -21,15 +21,16 @@ const Navbar = () => {
         <li className="hover:outline hover:outline-none md:hover:outline-2 hover:rounded-md hover:text-black hover:outline-transparent md:hover:outline-white transition-all">
             <NavLink className="hover:text-white" to="/">Home</NavLink>
         </li>
+        <li className="hover:outline hover:outline-none  md:hover:outline-2 hover:rounded-md hover:text-black mx-0 md:mx-4 hover:outline-transparent md:hover:outline-white transition-all">
+            <NavLink className="hover:text-white" to="/contact">Contact Us</NavLink>
+        </li>
         <li className="hover:outline hover:outline-none hover:outline-2 hover:rounded-md hover:text-black mx-0 md:mx-4 hover:outline-transparent md:hover:outline-white transition-all">
             <NavLink className="hover:text-white" to="/menu">Our Menu</NavLink>
         </li>
         <li className="hover:outline hover:outline-none  md:hover:outline-2 hover:rounded-md hover:text-black mx-0 md:mx-4 hover:outline-transparent md:hover:outline-white transition-all">
-            <NavLink className="hover:text-white" to="/order/salad">Order Food</NavLink>
+            <NavLink className="hover:text-white" to="/order/salad">Our Shop</NavLink>
         </li>
-        <li className="hover:outline hover:outline-none  md:hover:outline-2 hover:rounded-md hover:text-black mx-0 md:mx-4 hover:outline-transparent md:hover:outline-white transition-all">
-            <NavLink className="hover:text-white" to="/contact">Contact</NavLink>
-        </li>
+        
         {/* <li className="hover:outline hover:outline-2 hover:rounded-md hover:text-black mx-4 hover:outline-white transition-all">
             <NavLink className="hover:text-white" to="/secret">Secret</NavLink>
         </li> */}
@@ -64,7 +65,7 @@ const Navbar = () => {
             <div className="block md:hidden flex-shrink-0 mt-2">
                 {
                     user ? <>
-                        <button onClick={handleLogOut} className="bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 px-2 py-[7px] rounded-md uppercase text-sm flex justify-center items-center space-x-2 font-semibold hover:bg-opacity-10 transition-all w-full">
+                        <button onClick={handleLogOut} className="bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 px-2 py-[7px] rounded-md uppercase text-xs flex justify-center items-center space-x-2 font-semibold hover:bg-opacity-10 transition-all w-full">
                             <span>{user?.displayName}</span>
                             <FiLogOut size={20} />
                         </button>
@@ -80,7 +81,7 @@ const Navbar = () => {
     </>
     return (
         <>
-            <nav className="navbar flex-col md:flex-row fixed z-10 bg-black/30 backdrop-blur-xl bg-opacity-40 w-full  md:max-w-screen-xl text-white  mx-auto rounded-b-lg">
+            <nav className="navbar flex-col md:flex-row fixed z-10 bg-yellow-500/30 backdrop-blur-xl bg-opacity-40 w-full  md:max-w-screen-xl text-white  mx-auto rounded-b-lg">
                 <div className="navbar-start flex-row-reverse justify-between md:justify-start md:flex-row w-full">
                     <div className="dropdown bg-black rounded-lg">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -91,8 +92,8 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to="/" className="btn-ghost text-xl uppercase flex-col px-0 md:px-[16px]">
-                        <p className="font-bold text-[16px] md:text-[20px]">Bistro Boss</p>
-                        <p className="tracking-normal md:tracking-[2px] text-[17px] md:text-[18px] font-semibold leading-none md:leading-6">Restaurant</p>
+                        <p className="font-bold text-[16px] md:text-[20px] leading-none">Bistro Boss</p>
+                        <p className="tracking-normal md:tracking-[2px] text-[17px] md:text-[18px] font-semibold leading-none md:leading-6 mt-1">Restaurant</p>
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
