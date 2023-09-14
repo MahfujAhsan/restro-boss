@@ -25,7 +25,7 @@ const SocialLogin = () => {
     //                         image: loggedInUser.photoURL
     //                     }
 
-    //                     fetch('http://localhost:5000/api/v1/users', {
+    //                     fetch('https://bistro-boss-server-v2.vercel.app/api/v1/users', {
     //                         method: 'POST',
     //                         headers: {
     //                             'content-type': 'application/json'
@@ -42,7 +42,7 @@ const SocialLogin = () => {
     //             //     email: loggedInUser.email,
     //             //     image: loggedInUser.photoURL
     //             // }
-    //             // fetch('http://localhost:5000/api/v1/users', {
+    //             // fetch('https://bistro-boss-server-v2.vercel.app/api/v1/users', {
     //             //     method: 'POST',
     //             //     headers: {
     //             //         'content-type': 'application/json'
@@ -68,7 +68,7 @@ const SocialLogin = () => {
                             email: loggedInUser.email,
                             image: loggedInUser.photoURL
                         }
-                        axios.post('http://localhost:5000/api/v1/users', saveUser)
+                        axios.post('https://bistro-boss-server-v2.vercel.app/api/v1/users', saveUser)
                             .then((res) => {
                                 if (res.status === 200) {
                                     navigate(from, { replace: true })

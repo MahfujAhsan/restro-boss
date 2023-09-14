@@ -25,7 +25,7 @@ const AllUsers = () => {
             confirmButtonText: 'Yes, Make Admin!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.patch(`http://localhost:5000/api/v1/users/admin/${user._id}`)
+                axiosSecure.patch(`https://bistro-boss-server-v2.vercel.app/api/v1/users/admin/${user._id}`)
                     .then(response => {
                         if (response.status === 200) {
                             refetch();
