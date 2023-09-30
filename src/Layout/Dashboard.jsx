@@ -26,7 +26,7 @@ const Dashboard = () => {
                             <li><NavLink className="hover:text-white" to='/dashboard/admin-home'><FaHome /> Admin Home</NavLink></li>
                             <li><NavLink className="hover:text-white" to='/dashboard/add-item'><FaUtensils /> Add an Item</NavLink></li>
                             <li><NavLink className="hover:text-white" to='/dashboard/manage-items'><FaWallet /> Manage Items</NavLink></li>
-                            <li><NavLink className="hover:text-white" to='/dashboard/history'><FaBook /> Manage Bookings</NavLink></li>
+                            {/* <li><NavLink className="hover:text-white" to='/dashboard/history'><FaBook /> Manage Bookings</NavLink></li> */}
                             <li><NavLink className="hover:text-white" to='/dashboard/all-users'><FaUsers /> All Users</NavLink></li>
 
                         </> : <>

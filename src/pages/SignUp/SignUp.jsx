@@ -59,6 +59,10 @@ const SignUp = () => {
             <div className="hero min-h-screen bg-base-200 rounded-3xl shadow-2xl">
                 <div className="hero-content flex-col lg:flex-row-reverse w-full justify-evenly">
                     <div className='md:w-1/2 '>
+                        <div className='text-center'>
+                            <h4>AdminEmail: <span className='font-bold'>admin@email.com</span></h4>
+                            <h4>AdminPassword: <span className='font-bold'>22Sw&JR88</span></h4>
+                        </div>
                         <img className='object-cover' src={singUpBanner} alt="" />
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)} className="card md:w-1/2 max-w-lg shadow-2xl bg-base-100">

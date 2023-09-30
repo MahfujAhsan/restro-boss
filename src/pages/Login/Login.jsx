@@ -60,6 +60,10 @@ const Login = () => {
             <div className="hero min-h-screen bg-base-200 rounded-3xl">
                 <div className="hero-content flex-col md:flex-row w-full justify-evenly">
                     <div className='md:w-1/2'>
+                        <div className='text-center'>
+                            <h4>AdminEmail: <span className='font-bold'>admin@email.com</span></h4>
+                            <h4>AdminPassword: <span className='font-bold'>22Sw&JR88</span></h4>
+                        </div>
                         <img className='object-cover' src={singUpBanner} alt="" />
                     </div>
                     <div className="card md:w-1/2 max-w-lg shadow-2xl">
@@ -92,7 +96,7 @@ const Login = () => {
                             </div>
                             {/* Make button disabled for captcha */}
                             <div className="form-control mt-6">
-                                <button disabled={false} className="btn bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-white font-bold text-xs" type="submit">Login <FiLogIn size={20}/></button>
+                                <button disabled={disabled} className="btn bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 text-white font-bold text-xs" type="submit">Login <FiLogIn size={20}/></button>
                             </div>
                         </form>
                         <p className='text-center'><small className='font-semibold'>New Here?</small> <Link to="/signup" className='text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-purple-700 to-pink-700 font-semibold'>Create an account</Link></p>
